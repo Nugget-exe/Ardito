@@ -73,51 +73,7 @@ def main():
 
 
 while True:
-    ans = input("What do you want to do? type help for list of commands: ")
-    if ans.lower() == 'help':
-        print("type score to view score, dbadjust to adjust the sound filter, exit to exit out of the program and record to start recording. Press s while recording to stop the recording.")
-    elif ans.lower() == 'score':
-        if not score:
-            print("There is nothing in the score!")
-        else:
-            print(score)
-            ans2 = input("Would you like to eidit the score?")
-            if ans2.lower() == 'yes':
-                print("Type add to add a note or rests, and remove to remove a speific note")
-                while True:
-                  ans3 = input("Add or remove? type exit to exit out of score editing")
-                  if ans3.lower() == 'add':
-                    notea = input("type a note to be added: ")
-                    score.append(notea)
-                  elif ans3.lower() == 'remove':
-                    notea = input("Enter note to be removed: ")
-                    if notea not in score:
-                      print("note not in score")
-                    else:
-                      score.remove(notea)
-                  elif ans3.lower() == 'exit':
-                    break
-                  else:
-                    print("Enter valid option")
-            else:
-              continue
-        
-    elif ans.lower() == 'dbadjust':
-      while True:
-        dbvalue = float(input("enter new Dbvalue: "))
-        if dbvalue > 0:
-          raise Exception("Inputs must be under 0 for filter to work")
-        else: 
-          print("New value set!")
-          break
-    elif ans.lower() == 'exit':
-      print("Thank you for using Ardito")
-      break
-    elif ans.lower() == 'record':
-        while True:
-            if not microphone_available:
-                print("No microphone detected. Exiting...")
-                break
+    
          # read audio data
             audio_data = np.frombuffer(stream.read(buffer_size), dtype=np.int16)
 
@@ -137,10 +93,7 @@ while True:
                 break
 
 
-    else:
-      print("Enter a valid option")      
-    
-        
+   
 
 
 
