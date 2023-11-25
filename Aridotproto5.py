@@ -75,29 +75,24 @@ def main():
 while True:
     
          # read audio data
-            audio_data = np.frombuffer(stream.read(buffer_size), dtype=np.int16)
+    audio_data = np.frombuffer(stream.read(buffer_size), dtype=np.int16)
 
 
         # normalize audio data
-            audio_data = audio_data / np.iinfo(np.int16).max
+    audio_data = audio_data / np.iinfo(np.int16).max
 
         # calculate dB level
-            rms = math.sqrt(np.mean(np.square(audio_data)))
-            db = 20 * np.log10(rms)
+    rms = math.sqrt(np.mean(np.square(audio_data)))
+    db = 20 * np.log10(rms)
 
         # process pitch if dB level is greater than 20
-            if db > -40:
-                main()
-            time.sleep(0.1)
-            if keyboard.is_pressed('s'):
-                break
+    if db > -40:
+        main()
+        time.sleep(0.1)
+    if keyboard.is_pressed('s'):
+        break
 
 
-   
-
-
-
-   
 
 
 # stop and close audio stream
